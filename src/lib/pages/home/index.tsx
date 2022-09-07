@@ -18,8 +18,6 @@ const Home = () => {
     >
       <NextSeo title="Home" />
       <SomeText />
-      <SomeImage />
-      <CTASection />
     </Flex>
   );
 };
