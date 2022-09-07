@@ -1,1 +1,16 @@
 /* Global Styling here */
+
+html,
+body,
+#root {
+  padding: 0px !important;
+  margin: 0px !important;
+  height: 100vh;
+  width: 100vw;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
