@@ -8,7 +8,7 @@ const SomeText = () => {
       </Heading>
 
       <Text fontSize="xs" color="gray.500">
-        Professional Website{" "}
+        Site under construction haha get it construction
       </Text>
     </Grid>
   );
