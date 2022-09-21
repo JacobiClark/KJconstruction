@@ -1,3 +1,5 @@
+/* eslint-disable react/no-unused-prop-types */
+
 import {
   HamburgerIcon,
   CloseIcon,
