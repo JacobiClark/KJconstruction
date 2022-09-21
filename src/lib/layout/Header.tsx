@@ -42,14 +42,19 @@ const NAV_ITEMS: Array<NavItem> = [
     label: "Services",
     children: [
       {
-        label: "Explore Design Work",
-        subLabel: "Trending Design to inspire you",
-        href: "#",
+        label: "Custom Cabinetry",
+        subLabel: "Designed specifially for you",
+        href: "/",
       },
       {
-        label: "New & Noteworthy",
-        subLabel: "Up-and-coming Designers",
-        href: "/helslo",
+        label: "Custom Furniture",
+        subLabel: "Anything you need",
+        href: "/",
+      },
+      {
+        label: "Foo?",
+        subLabel: "Bar!",
+        href: "/",
       },
     ],
   },
@@ -57,13 +62,13 @@ const NAV_ITEMS: Array<NavItem> = [
     label: "Past projects",
     children: [
       {
-        label: "Job Board",
-        subLabel: "Find your dream design job",
+        label: "Renovation 1",
+        subLabel: "Project completed in 2022",
         href: "#",
       },
       {
-        label: "Freelance Projects",
-        subLabel: "An exclusive list for contract work",
+        label: "Custom wood work",
+        subLabel: "Project completed in 2003",
         href: "#",
       },
     ],
@@ -74,7 +79,7 @@ const NAV_ITEMS: Array<NavItem> = [
   },
   {
     label: "About",
-    href: "/hello",
+    href: "/about",
   },
 ];
 
