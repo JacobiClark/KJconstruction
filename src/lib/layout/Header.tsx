@@ -3,10 +3,12 @@ import {
   CloseIcon,
   ChevronDownIcon,
   ChevronRightIcon,
+  EmailIcon,
 } from "@chakra-ui/icons";
 import {
   Box,
   Flex,
+  Heading,
   Text,
   IconButton,
   Button,
@@ -22,6 +24,12 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 
+/* TODO: Use this for semantic next links with chakra <Link href="/login" passHref>
+        <Button as="a">Login</Button>
+        </Link> */
+
+import ThemeToggle from "./ThemeToggle";
+
 interface NavItem {
   label: string;
   subLabel?: string;
@@ -31,7 +39,7 @@ interface NavItem {
 
 const NAV_ITEMS: Array<NavItem> = [
   {
-    label: "Inspiration",
+    label: "Services",
     children: [
       {
         label: "Explore Design Work",
@@ -41,12 +49,12 @@ const NAV_ITEMS: Array<NavItem> = [
       {
         label: "New & Noteworthy",
         subLabel: "Up-and-coming Designers",
-        href: "/foo",
+        href: "/helslo",
       },
     ],
   },
   {
-    label: "Find Work",
+    label: "Past projects",
     children: [
       {
         label: "Job Board",
@@ -61,114 +69,14 @@ const NAV_ITEMS: Array<NavItem> = [
     ],
   },
   {
-    label: "Learn Design",
-    href: "/foo",
+    label: "Gallery",
+    href: "/gallery",
   },
   {
-    label: "Hire Designers",
-    href: "#",
+    label: "About",
+    href: "/hello",
   },
 ];
-
-const DesktopNav = () => {
-  const linkColor = useColorModeValue("gray.600", "gray.200");
-  const linkHoverColor = useColorModeValue("gray.800", "white");
-  const popoverContentBgColor = useColorModeValue("white", "gray.800");
-
-  return (
-    <Stack direction="row" spacing={4}>
-      {NAV_ITEMS.map((navItem) => (
-        <Box key={navItem.label}>
-          <Popover trigger="hover" placement="bottom-start">
-            <PopoverTrigger>
-              <Link
-                p={2}
-                href={navItem.href ?? "#"}
-                fontSize="sm"
-                fontWeight={500}
-                color={linkColor}
-                _hover={{
-                  textDecoration: "none",
-                  color: linkHoverColor,
-                }}
-              >
-                {navItem.label}
-              </Link>
-            </PopoverTrigger>
-
-            {navItem.children && (
-              <PopoverContent
-                border={0}
-                boxShadow="xl"
-                bg={popoverContentBgColor}
-                p={4}
-                rounded="xl"
-                minW="sm"
-              >
-                <Stack>
-                  {navItem.children.map((child) => (
-                    <DesktopSubNav key={child.label} {...child} />
-                  ))}
-                </Stack>
-              </PopoverContent>
-            )}
-          </Popover>
-        </Box>
-      ))}
-    </Stack>
-  );
-};
-
-const DesktopSubNav = ({ label, href, subLabel }: NavItem) => {
-  return (
-    <Link
-      href={href}
-      role="group"
-      display="block"
-      p={2}
-      rounded="md"
-      _hover={{ bg: useColorModeValue("pink.50", "gray.900") }}
-    >
-      <Stack direction="row" align="center">
-        <Box>
-          <Text
-            transition="all .3s ease"
-            _groupHover={{ color: "pink.400" }}
-            fontWeight={500}
-          >
-            {label}
-          </Text>
-          <Text fontSize="sm">{subLabel}</Text>
-        </Box>
-        <Flex
-          transition="all .3s ease"
-          transform="translateX(-10px)"
-          opacity={0}
-          _groupHover={{ opacity: "100%", transform: "translateX(0)" }}
-          justify="flex-end"
-          align="center"
-          flex={1}
-        >
-          <Icon color="pink.400" w={5} h={5} as={ChevronRightIcon} />
-        </Flex>
-      </Stack>
-    </Link>
-  );
-};
-
-const MobileNav = () => {
-  return (
-    <Stack
-      bg={useColorModeValue("white", "gray.800")}
-      p={4}
-      display={{ md: "none" }}
-    >
-      {NAV_ITEMS.map((navItem) => (
-        <MobileNavItem key={navItem.label} {...navItem} />
-      ))}
-    </Stack>
-  );
-};
 
 const MobileNavItem = ({ label, children, href }: NavItem) => {
   const { isOpen, onToggle } = useDisclosure();
@@ -223,6 +131,106 @@ const MobileNavItem = ({ label, children, href }: NavItem) => {
   );
 };
 
+const MobileNav = () => {
+  return (
+    <Stack
+      bg={useColorModeValue("white", "gray.800")}
+      p={4}
+      display={{ md: "none" }}
+    >
+      {NAV_ITEMS.map((navItem) => (
+        <MobileNavItem key={navItem.label} {...navItem} />
+      ))}
+    </Stack>
+  );
+};
+
+const DesktopSubNav = ({ label, href, subLabel }: NavItem) => {
+  return (
+    <Link
+      href={href}
+      role="group"
+      display="block"
+      p={2}
+      rounded="md"
+      _hover={{ bg: useColorModeValue("pink.50", "gray.900") }}
+    >
+      <Stack direction="row" align="center">
+        <Box>
+          <Text
+            transition="all .3s ease"
+            _groupHover={{ color: "pink.400" }}
+            fontWeight={500}
+          >
+            {label}
+          </Text>
+          <Text fontSize="sm">{subLabel}</Text>
+        </Box>
+        <Flex
+          transition="all .3s ease"
+          transform="translateX(-10px)"
+          opacity={0}
+          _groupHover={{ opacity: "100%", transform: "translateX(0)" }}
+          justify="flex-end"
+          align="center"
+          flex={1}
+        >
+          <Icon color="pink.400" w={5} h={5} as={ChevronRightIcon} />
+        </Flex>
+      </Stack>
+    </Link>
+  );
+};
+
+const DesktopNav = () => {
+  const linkColor = useColorModeValue("gray.600", "gray.200");
+  const linkHoverColor = useColorModeValue("gray.800", "white");
+  const popoverContentBgColor = useColorModeValue("white", "gray.800");
+
+  return (
+    <Stack direction="row" spacing={4}>
+      {NAV_ITEMS.map((navItem) => (
+        <Box key={navItem.label}>
+          <Popover trigger="hover" placement="bottom-start">
+            <PopoverTrigger>
+              <Link
+                p={2}
+                href={navItem.href ?? "#"}
+                fontSize="sm"
+                fontWeight={500}
+                color={linkColor}
+                _hover={{
+                  textDecoration: "none",
+                  color: linkHoverColor,
+                }}
+              >
+                {navItem.label}
+              </Link>
+            </PopoverTrigger>
+
+            {navItem.children && (
+              <PopoverContent
+                border={0}
+                boxShadow="xl"
+                bg={popoverContentBgColor}
+                p={4}
+                rounded="xl"
+                minW="sm"
+              >
+                <Stack>
+                  {navItem.children.map((child) => (
+                    <DesktopSubNav key={child.label} {...child} />
+                  ))}
+                </Stack>
+              </PopoverContent>
+            )}
+          </Popover>
+        </Box>
+      ))}
+    </Stack>
+  );
+};
+
 export default function Header() {
   const { isOpen, onToggle } = useDisclosure();
 
@@ -239,11 +247,8 @@ export default function Header() {
         borderColor={useColorModeValue("gray.200", "gray.900")}
         align="center"
       >
-        <Flex
-          flex={{ base: 1, md: "auto" }}
-          ml={{ base: -2 }}
-          display={{ base: "flex", md: "none" }}
-        >
+        {/* ////////////////////////////////////////////////////////////// */}
+        <Flex ml={{ base: -2 }} display={{ base: "flex", md: "none" }}>
           <IconButton
             onClick={onToggle}
             icon={
@@ -253,44 +258,50 @@ export default function Header() {
             aria-label="Toggle Navigation"
           />
         </Flex>
-        <Flex flex={{ base: 1 }} justify={{ base: "center", md: "start" }}>
-          <Text
-            textAlign={useBreakpointValue({ base: "center", md: "left" })}
-            fontFamily="heading"
-            color={useColorModeValue("gray.800", "white")}
-          >
-            Logo
-          </Text>
+        {/* ////////////////////////////////////////////////////////////// */}
+        <Flex
+          flex={{ base: 1 }}
+          bg={useColorModeValue("white", "gray.800")}
+          justify={{ base: "center", md: "start" }}
+          align="center"
+        >
+          <Link href="/">
+            <Heading
+              as="h1"
+              size="md"
+              textAlign={useBreakpointValue({ base: "center", md: "left" })}
+              color={useColorModeValue("gray.800", "white")}
+            >
+              Jensen wood works
+            </Heading>
+          </Link>
 
-          <Flex display={{ base: "none", md: "flex" }} ml={10}>
+          <Flex display={{ base: "none", md: "flex" }} ml={10} align="center">
             <DesktopNav />
+            <Link href="/contact">
+              <Button
+                display={{ base: "none", md: "flex" }}
+                ml={5}
+                fontSize="sm"
+                fontWeight={600}
+                leftIcon={<EmailIcon />}
+                colorScheme="teal"
+                variant="solid"
+                _hover={{
+                  bg: "teal.300",
+                }}
+              >
+                Contact Kelly
+              </Button>
+            </Link>
           </Flex>
         </Flex>
-
-        <Stack
-          flex={{ base: 1, md: 0 }}
-          justify="flex-end"
-          direction="row"
-          spacing={6}
-        >
-          <Button as="a" fontSize="sm" fontWeight={400} variant="link" href="#">
-            Sign In
-          </Button>
-          <Button
-            display={{ base: "none", md: "inline-flex" }}
-            fontSize="sm"
-            fontWeight={600}
-            color="white"
-            bg="pink.400"
-            _hover={{
-              bg: "pink.300",
-            }}
-          >
-            Sign Up
-          </Button>
+        {/* ////////////////////////////////////////////////////////////// */}
+        <Stack display="flex" justify="flex-end" direction="row" spacing={6}>
+          <ThemeToggle />
         </Stack>
       </Flex>
-
+      {/* ////////////////////////////////////////////////////////////// */}
       <Collapse in={isOpen} animateOpacity>
         <MobileNav />
       </Collapse>

@@ -11,7 +11,7 @@ type LayoutProps = {
 const Layout = ({ children }: LayoutProps) => {
   return (
     <Container
-      maxW="container.xl"
+      maxW="container.2xl"
       height="100vh"
       display="flex"
       flexDirection="column"

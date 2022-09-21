@@ -1,21 +1,21 @@
 /** @type {import('next-seo').DefaultSeoProps} */
 const defaultSEOConfig = {
-  title: "Kelly Jensen Construction",
-  titleTemplate: "%s | Kelly Jensen Construction",
-  defaultTitle: "Kelly Jensen Construction",
+  title: "Jensen Wood Works",
+  titleTemplate: "%s | Jensen Wood Works",
+  defaultTitle: "Jensen Wood Works",
   description: "Next.js + chakra-ui + TypeScript template",
-  canonical: "https://Kelly Jensen Construction.sznm.dev",
+  canonical: "https://Jensen Wood Works.sznm.dev",
   openGraph: {
-    url: "https://Kelly Jensen Construction.sznm.dev",
-    title: "Kelly Jensen Construction",
+    url: "https://Jensen Wood Works.sznm.dev",
+    title: "Jensen Wood Works",
     description: "Next.js + chakra-ui + TypeScript template",
     images: [
       {
-        url: "https://og-image.sznm.dev/**Kelly Jensen Construction**.sznm.dev.png?theme=dark&md=1&fontSize=125px&images=https%3A%2F%2Fsznm.dev%2Favataaars.svg&widths=250",
-        alt: "Kelly Jensen Construction.sznm.dev og-image",
+        url: "https://og-image.sznm.dev/**Jensen Wood Works**.sznm.dev.png?theme=dark&md=1&fontSize=125px&images=https%3A%2F%2Fsznm.dev%2Favataaars.svg&widths=250",
+        alt: "Jensen Wood Works.sznm.dev og-image",
       },
     ],
-    site_name: "Kelly Jensen Construction",
+    site_name: "Jensen Wood Works",
   },
   twitter: {
     handle: "@sozonome",
