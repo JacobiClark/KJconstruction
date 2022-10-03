@@ -11,18 +11,18 @@ type LayoutProps = {
 const Layout = ({ children }: LayoutProps) => {
   return (
     <Box
-      margin="0 auto"
-      h="100vh"
+      display="flex"
+      flexDirection="column"
+      minHeight="100vh"
+      width="full"
       maxWidth="container.2xl"
       transition="0.5s ease-out"
     >
-      <Box>
-        <Header />
-        <Box as="main" marginY={22}>
-          {children}
-        </Box>
-        <Footer />
+      <Header />
+      <Box as="main" marginY={7} display="flex" flex="1">
+        {children}
       </Box>
+      <Footer />
     </Box>
   );
 };
