@@ -59,8 +59,8 @@ const Header = () => {
               md: "inline-flex",
             }}
           >
-            <ChakraNextLinkButton href="/blah" variant="ghost">
-              Features
+            <ChakraNextLinkButton href="/contact" variant="ghost">
+              Contact
             </ChakraNextLinkButton>
             <ChakraNextLinkButton href="/blah" variant="ghost">
               Features
