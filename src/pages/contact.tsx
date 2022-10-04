@@ -1,7 +1,10 @@
+import { useState } from "react";
 import {
   FormControl,
   FormHelperText,
+  Textarea,
   FormLabel,
+  Button,
   Input,
   VStack,
   HStack,
@@ -12,11 +15,21 @@ import {
   Box,
   SliderFilledTrack,
   SliderThumb,
+  SliderMark,
 } from "@chakra-ui/react";
+import { MdOutlineEmail } from "react-icons/md";
 
 import PageContainer from "lib/layout/pageContainer";
 
+const labelStyles = {
+  mt: "4",
+  ml: "-30px",
+  fontSize: "sm",
+};
+
 function Contact() {
+  const [sliderValue, setSliderValue] = useState(50);
+
   return (
     <PageContainer>
       <VStack
@@ -37,7 +50,7 @@ function Contact() {
       <VStack
         w="full"
         maxW="900"
-        spacing={4}
+        spacing={6}
         mb={5}
         display="flex"
         flexDirection="column"
@@ -56,16 +69,49 @@ function Contact() {
         <FormControl w="full" isRequired>
           <FormLabel>Email address</FormLabel>
           <Input type="email" />
-          <FormHelperText>W never share your email.</FormHelperText>
         </FormControl>
-        <Slider defaultValue={60} min={0} max={300} step={30}>
-          <SliderTrack bg="red.100">
-            <Box position="relative" right={10} />
-            <SliderFilledTrack bg="tomato" />
-          </SliderTrack>
-          <SliderThumb boxSize={6} />
-        </Slider>
+        <FormControl w="full" isRequired>
+          <FormLabel>Project description</FormLabel>
+          <Textarea
+            h="150"
+            placeholder="Tell me about the work you need done"
+          />
+        </FormControl>
+        <FormControl w="full" isRequired>
+          <FormLabel>Budget Estimate</FormLabel>
+          <Slider defaultValue={0} min={0} max={4} step={1} mr={7}>
+            <SliderMark value={0} mt="4" ml="-5" fontSize="md">
+              ~$1000
+            </SliderMark>
+            <SliderMark value={1} mt="4" ml="-5" fontSize="md">
+              $3000
+            </SliderMark>
+            <SliderMark value={2} mt="4" ml="-5" fontSize="md">
+              $7000
+            </SliderMark>
+            <SliderMark value={3} mt="4" ml="-5" fontSize="md">
+              $15000
+            </SliderMark>
+            <SliderMark value={4} mt="4" ml="-10" fontSize="md">
+              $25000+
+            </SliderMark>
+
+            <SliderTrack bg="green.100">
+              <Box position="relative" right={10} />
+              <SliderFilledTrack bg="green.300" />
+            </SliderTrack>
+            <SliderThumb boxSize={6} bg="blue.100" />
+          </Slider>
+        </FormControl>
       </VStack>
+      <Button
+        m={8}
+        rightIcon={<MdOutlineEmail />}
+        colorScheme="blue"
+        variant="outline"
+      >
+        Email Kelly Jensen
+      </Button>
     </PageContainer>
   );
 }
